@@ -1,4 +1,4 @@
-﻿#define ATTEMPT_TO_BLOW_VTABLE
+﻿//#define ATTEMPT_TO_BLOW_VTABLE
 
 using System;
 using System.Diagnostics;
@@ -425,8 +425,8 @@ class TestEnums
             VguPNBYPHQ() + VguPNBYPHQa() + VguPNBYPHQb() +
             0;
         }
-    };
 #endif
+    };
     class A : State
     {
         override public int getValue()
@@ -507,8 +507,11 @@ class TestEnums
     {
 #if ATTEMPT_TO_BLOW_VTABLE
         var asdf = new State();
-        Console.WriteLine(asdf.bumper());
+        Console.WriteLine("ATTEMPT_TO_BLOW_VTABLE==true!", asdf.bumper());
+#else
+        Console.WriteLine("ATTEMPT_TO_BLOW_VTABLE==false!");
 #endif
+
 
         Int64 count = 1_000_000_000;
         for (int i = 0; i < 10; i++)
